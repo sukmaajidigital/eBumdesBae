@@ -52,3 +52,26 @@ Route::get('/', function () {
 
     return view('homepage.index', compact('products', 'benefits'));
 });
+
+Route::get('/admin', function () {
+    return view('admin.index');
+})->name('admin.index');
+
+
+Route::get('/admin/kategori', function () {
+    return view('admin.kategori.index');
+})->name('admin.kategori');
+
+
+Route::get('/admin/produk', function () {
+    return view('admin.produk.index');
+})->name('admin.produk');
+
+Route::get('/admin/produk/form', function () {
+    return view('admin.produk.form');
+})->name('admin.produk.form');
+
+
+Route::get('/admin/settings', function () {
+    return view('admin.settings.index');
+})->name('admin.settings');
