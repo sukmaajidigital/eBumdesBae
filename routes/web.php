@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\kategoriController;
+use App\Http\Controllers\admin\produkController;
 use App\Http\Controllers\admin\settingController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,12 +19,12 @@ Route::prefix('admin')->group(function () {
     });
     // PRODUK
     Route::prefix('produk')->group(function () {
-        Route::get('/', function () {
-            return view('admin.produk.index');
-        })->name('admin.produk');
-        Route::get('/form', function () {
-            return view('admin.produk.form');
-        })->name('admin.produk.form');
+        Route::get('/', [produkController::class, 'index'])->name('admin.produk.index');
+        Route::get('/form', [produkController::class, 'create'])->name('admin.produk.form');
+        Route::post('/store', [produkController::class, 'store'])->name('admin.produk.store');
+        Route::get('/{produk}/edit', [produkController::class, 'edit'])->name('admin.produk.edit');
+        Route::put('/{produk}/update', [produkController::class, 'update'])->name('admin.produk.update');
+        Route::delete('/{produk}/destroy', [produkController::class, 'destroy'])->name('admin.produk.destroy');
     });
     // SETTING
     Route::prefix('settings')->group(function () {

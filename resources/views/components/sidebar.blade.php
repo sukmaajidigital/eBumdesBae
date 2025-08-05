@@ -21,14 +21,14 @@
             </a>
         </div>
         <div>
-            <a href="{{ route('admin.kategori.index') }}" class="px-3 py-2 flex items-center rounded-sm {{ request()->routeIs('admin.kategori') ? $activeClasses : $inactiveClasses }}">
+            <a href="{{ route('admin.kategori.index') }}" class="px-3 py-2 flex items-center rounded-sm {{ request()->routeIs('admin.kategori.index') ? $activeClasses : $inactiveClasses }}">
                 <x-lucide-tag class="h-5 w-5" />
                 <span class="mx-3">Kategori Produk</span>
             </a>
         </div>
         <div>
 
-            <a href="{{ route('admin.produk') }}" class="px-3 py-2 flex items-center rounded-sm {{ request()->routeIs('admin.produk') || request()->routeIs('admin.produk.form') ? $activeClasses : $inactiveClasses }}">
+            <a href="{{ route('admin.produk.index') }}" class="px-3 py-2 flex items-center rounded-sm {{ request()->routeIs('admin.produk.index') || request()->routeIs('admin.produk.form') ? $activeClasses : $inactiveClasses }}">
                 <x-lucide-package class="h-5 w-5" />
                 <span class="mx-3">Produk</span>
             </a>
