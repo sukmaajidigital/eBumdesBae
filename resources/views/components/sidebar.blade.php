@@ -5,12 +5,12 @@
 
 <!-- Sidebar -->
 <sidebar
-    class="fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 transform bg-white shadow-lg dark:bg-gray-800 lg:translate-x-0 lg:static lg:inset-0"
+    class="fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 transform bg-gray-50 border-r border-gray-200 lg:translate-x-0 lg:static lg:inset-0"
     :class="{ 'translate-x-0 ease-out': sidebarOpen, '-translate-x-full ease-in': !sidebarOpen }">
     <!-- Sidebar Header -->
-    <div class="flex items-center justify-start h-16 px-6 bg-gray-50 dark:bg-gray-700">
-        <a href="/" class="text-lg font-bold text-gray-800 dark:text-white">
-            AdminPanel
+    <div class="flex items-center justify-start h-16 px-6 border-b border-gray-200">
+        <a href="/" class="text-xl font-medium text-gray-800 ">
+            Admin Panel
         </a>
     </div>
 

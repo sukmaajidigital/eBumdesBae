@@ -3,11 +3,11 @@
         Produk
     </x-slot>
 
-    <div class="mx-auto max-w-7xl p-4 sm:p-6 rounded-md border border-gray-200 shadow-md mt-4 sm:mt-8 md:mt-12">
+    <div class="mx-auto max-w-7xl p-4 sm:p-6 rounded-md border border-gray-200 mt-4 sm:mt-8 md:mt-12">
         <div class="overflow-hidden bg-white sm:rounded-lg">
-            {{-- Tombol untuk menambah kategori baru --}}
+            {{-- Tombol untuk menambah produk baru --}}
             <div class="mb-6 flex justify-between items-center">
-                <h3 class="text-2xl font-medium">Daftar Kategori</h3>
+                <h3 class="text-2xl font-medium">Daftar Produk</h3>
                 <a href="{{ route('admin.produk.form') }}"
                     class="px-4 py-2 bg-gray-800 text-gray-100 hover:bg-gray-900 rounded-md cursor-pointer">Tambah
                     Produk</a>
