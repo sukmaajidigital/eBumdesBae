@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\kategoriController;
 use App\Http\Controllers\admin\settingController;
 use Illuminate\Support\Facades\Route;
 
@@ -10,9 +11,10 @@ Route::prefix('admin')->group(function () {
     })->name('admin.index');
     // KATEGORI
     Route::prefix('kategori')->group(function () {
-        Route::get('/', function () {
-            return view('admin.kategori.index');
-        })->name('admin.kategori');
+        Route::get('/', [kategoriController::class, 'index'])->name('admin.kategori.index');
+        Route::post('/', [kategoriController::class, 'store'])->name('admin.kategori.store');
+        Route::put('/{kategori}', [kategoriController::class, 'update'])->name('admin.kategori.update');
+        Route::delete('/{kategori}', [kategoriController::class, 'destroy'])->name('admin.kategori.destroy');
     });
     // PRODUK
     Route::prefix('produk')->group(function () {
