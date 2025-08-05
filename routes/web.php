@@ -1,6 +1,35 @@
 <?php
 
+use App\Http\Controllers\admin\settingController;
 use Illuminate\Support\Facades\Route;
+
+Route::prefix('admin')->group(function () {
+    // OVERVIEW
+    Route::get('/', function () {
+        return view('admin.index');
+    })->name('admin.index');
+    // KATEGORI
+    Route::prefix('kategori')->group(function () {
+        Route::get('/', function () {
+            return view('admin.kategori.index');
+        })->name('admin.kategori');
+    });
+    // PRODUK
+    Route::prefix('produk')->group(function () {
+        Route::get('/', function () {
+            return view('admin.produk.index');
+        })->name('admin.produk');
+        Route::get('/form', function () {
+            return view('admin.produk.form');
+        })->name('admin.produk.form');
+    });
+    // SETTING
+    Route::prefix('settings')->group(function () {
+        Route::get('/', [settingController::class, 'index'])->name('admin.settings');
+
+        Route::post('/update', [settingController::class, 'update'])->name('admin.settings.update');
+    });
+});
 
 Route::get('/', function () {
     $products = [
@@ -52,26 +81,3 @@ Route::get('/', function () {
 
     return view('homepage.index', compact('products', 'benefits'));
 });
-
-Route::get('/admin', function () {
-    return view('admin.index');
-})->name('admin.index');
-
-
-Route::get('/admin/kategori', function () {
-    return view('admin.kategori.index');
-})->name('admin.kategori');
-
-
-Route::get('/admin/produk', function () {
-    return view('admin.produk.index');
-})->name('admin.produk');
-
-Route::get('/admin/produk/form', function () {
-    return view('admin.produk.form');
-})->name('admin.produk.form');
-
-
-Route::get('/admin/settings', function () {
-    return view('admin.settings.index');
-})->name('admin.settings');
