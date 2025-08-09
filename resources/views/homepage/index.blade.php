@@ -6,12 +6,12 @@
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div>
                     <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-                        Solusi Ramah Lingkungan untuk
-                        <span class="text-green-600"> Rumah Sehat</span>
+                        Marketplace Produk
+                        <br>
+                        <span class="text-green-600"> BUMDES Berkualitas</span>
                     </h1>
                     <p class="text-xl text-gray-600 mb-8">
-                        Eco Enzyme adalah cairan ajaib hasil fermentasi limbah dapur yang dapat menggantikan berbagai
-                        produk pembersih kimia berbahaya.
+                        Temukan berbagai produk unggulan dari Badan Usaha Milik Desa (BUMDES) desa Bae. Dari eco enzyme, media tanam, pupuk organik, hingga produk pertanian berkualitas tinggi.
                     </p>
                     <button
                         class="bg-green-600 text-white px-8 py-4 rounded-lg hover:bg-green-700 transition-colors flex items-center gap-2 text-lg font-semibold">
@@ -32,12 +32,10 @@
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                    Apa itu Eco Enzyme?
+                    Tentang BUMDES Mart
                 </h2>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-                    Eco Enzyme adalah cairan hasil fermentasi limbah organik dapur seperti kulit buah dan sayuran dengan
-                    gula merah dan air. Proses fermentasi selama 3 bulan menghasilkan cairan yang kaya akan enzim
-                    bermanfaat.
+                    BUMDES Mart adalah platform marketplace yang menghubungkan produk-produk unggulan dari Badan Usaha Milik Desa (BUMDES) dengan konsumen di seluruh Indonesia. Kami menyediakan berbagai produk berkualitas dari desa untuk mendukung ekonomi lokal.
                 </p>
             </div>
 
@@ -76,13 +74,13 @@
     </section>
 
     {{-- benefit section --}}
-    <section id="benefits" class="py-20 bg-green-50 dark:bg-gray-900">
+    <section id="benefits" class="py-20 bg-green-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                     Manfaat Eco Enzyme
                 </h2>
-                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                     Dengan satu produk, Anda mendapatkan berbagai manfaat untuk rumah dan lingkungan
                 </p>
             </div>
@@ -90,17 +88,17 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 @foreach ($benefits as $benefit)
                     <div
-                        class="bg-white dark:bg-gray-800 rounded-lg p-6 text-center shadow-md hover:shadow-xl transition-shadow duration-300">
+                        class="bg-white rounded-lg p-6 text-center shadow-md hover:shadow-xl transition-shadow duration-300">
                         <div
-                            class="bg-green-100 dark:bg-green-900/50 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            class="bg-green-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
 
                             <x-dynamic-component component="lucide-{{ $benefit['icon'] }}"
-                                class="h-8 w-8 text-green-600 dark:text-green-400" />
+                                class="h-8 w-8 text-green-600" />
 
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">{{ $benefit['title'] }}
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3">{{ $benefit['title'] }}
                         </h3>
-                        <p class="text-gray-600 dark:text-gray-400">{{ $benefit['description'] }}</p>
+                        <p class="text-gray-600 ">{{ $benefit['description'] }}</p>
                     </div>
                 @endforeach
             </div>
@@ -108,13 +106,13 @@
     </section>
 
     {{-- produk section --}}
-    <section id="products" class="py-20 bg-gray-50 dark:bg-gray-900">
+    <section id="products" class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
                     Produk Kami
                 </h2>
-                <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                     Pilih produk Eco Enzyme sesuai kebutuhan Anda
                 </p>
             </div>
@@ -123,17 +121,17 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach ($products as $product)
                     <div
-                        class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                        class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
                         <img src="{{ $product['image'] }}" alt="{{ $product['name'] }}"
                             class="w-full h-48 object-cover" />
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{{ $product['name'] }}
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900">{{ $product['name'] }}
                             </h3>
-                            <p class="text-gray-600 dark:text-gray-400 mb-3">{{ $product['description'] }}</p>
+                            <p class="text-gray-600  mb-3">{{ $product['description'] }}</p>
                             <div class="flex justify-between items-center mb-4">
-                                <span class="text-gray-500 dark:text-gray-400">{{ $product['size'] }}</span>
+                                <span class="text-gray-500 ">{{ $product['size'] }}</span>
                                 <span
-                                    class="text-2xl font-bold text-green-600 dark:text-green-400">{{ $product['price'] }}</span>
+                                    class="text-2xl font-bold text-green-600">{{ $product['price'] }}</span>
                             </div>
                             <button
                                 class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center gap-2">

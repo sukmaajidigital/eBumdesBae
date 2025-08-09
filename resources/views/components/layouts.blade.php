@@ -13,7 +13,7 @@
     {{-- Memuat Aset Vite (Tailwind CSS & JS) --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="font-sans antialiased bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+<body class="font-sans antialiased bg-gray-100 text-gray-800">
 
     {{-- Wrapper utama dengan flexbox untuk mendorong footer ke bawah --}}
     <div class="flex flex-col min-h-screen">

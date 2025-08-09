@@ -2,6 +2,7 @@
     <x-slot name="header">
         Kategori
     </x-slot>
+    <p class="text-gray-700 mt-1">Atur, tambah, atau hapus kategori untuk mengelompokkan produk Anda.</p>
 
     <div x-data="{
         openModal: false,
@@ -25,7 +26,7 @@
             @endif
 
             <div class="mb-6 flex justify-between items-center">
-                <h3 class="text-2xl font-medium">Daftar Kategori</h3>
+                <h3 class="text-xl font-medium">Daftar Kategori</h3>
                 <button @click="
                     openModal = true; 
                     isEdit = false; 

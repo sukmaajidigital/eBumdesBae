@@ -2,9 +2,10 @@
     <x-slot name="header">
         Settings
     </x-slot>
+    <p class="text-gray-700 mt-1">Konfigurasi informasi toko, akun pengguna, dan preferensi sistem lainnya.</p>
 
     <div class="mt-4 sm:mt-8 md:mt-12 gap-4 border border-gray-200 rounded-md p-4 sm:p-6">
-        <h3 class="text-2xl font-medium text-gray-900 mb-4">Pengaturan Toko</h3>
+        <h3 class="text-xl font-medium text-gray-900 mb-4">Pengaturan Toko</h3>
 
         {{-- Menampilkan pesan sukses jika ada --}}
         @if (session('success'))

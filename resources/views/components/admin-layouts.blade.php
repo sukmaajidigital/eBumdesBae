@@ -22,16 +22,17 @@
 
 <body class="font-sans antialiased">
     <div x-data="{ sidebarOpen: false }" class="flex h-screen">
-
         <x-sidebar />
+
         <div class="flex-1 flex flex-col overflow-hidden">
+            <x-admin-header />
 
             <!-- Main content -->
             <main class="flex-1 overflow-x-hidden overflow-y-auto">
-                <div class="container px-6 py-8 mx-auto">
+                <div class="container px-6 py-4 mx-auto">
                     <!-- Page Title -->
                     @if (isset($header))
-                        <h3 class="text-4xl font-medium text-gray-900">{{ $header }}</h3>
+                        <h3 class="text-2xl font-semibold text-gray-900">{{ $header }}</h3>
                     @endif
 
                     <!-- Main Content Slot -->

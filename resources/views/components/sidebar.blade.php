@@ -1,13 +1,13 @@
 @php
-    $activeClasses = 'bg-gray-200 text-gray-700 bg-gray-800 text-white';
+    $activeClasses = 'bg-gray-800 text-white';
     $inactiveClasses = 'text-gray-600 hover:bg-gray-200';
 @endphp
 
 <!-- Sidebar -->
-<sidebar class="fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 transform bg-gray-50 border-r border-gray-200 lg:translate-x-0 lg:static lg:inset-0" :class="{ 'translate-x-0 ease-out': sidebarOpen, '-translate-x-full ease-in': !sidebarOpen }">
+<sidebar class="fixed inset-y-0 left-0 z-50 w-64 overflow-y-auto transition duration-300 transform bg-gray-50 border-r border-gray-200 lg:translate-x-0 lg:static lg:inset-0" :class="{ 'translate-x-0 ease-out': sidebarOpen, '-translate-x-full ease-in': !sidebarOpen }">
     <!-- Sidebar Header -->
     <div class="flex items-center justify-start h-16 px-6 border-b border-gray-200">
-        <a href="/" class="text-xl font-medium text-gray-800 ">
+        <a href="/admin" class="text-xl font-medium text-gray-800">
             Admin Panel
         </a>
     </div>
@@ -38,6 +38,13 @@
             <a href="{{ route('admin.settings') }}" class="px-3 py-2 flex items-center rounded-sm {{ request()->routeIs('admin.settings') ? $activeClasses : $inactiveClasses }}">
                 <x-lucide-settings class="h-5 w-5" />
                 <span class="mx-3">Settings</span>
+            </a>
+        </div>
+        <div>
+
+            <a href="{{ route('admin.settings') }}" class="px-3 py-2 flex items-center rounded-sm text-red-600 hover:bg-red-200 hover:text-red-800">
+                <x-lucide-log-out class="h-5 w-5" />
+                <span class="mx-3">Logout</span>
             </a>
         </div>
     </nav>
