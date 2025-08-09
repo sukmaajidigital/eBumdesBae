@@ -48,7 +48,7 @@
                         </div>
                         <div>
                             <label for="description" class="text-gray-900 font-semibold">Deskripsi Produk</label>
-                            <textarea id="description" name="description" rows="5" class="w-full px-4 py-3 text-gray-700 border border-gray-200 rounded-sm" placeholder="Masukkan deskripsi produk" required>{{ old('description', $produk->description ?? '') }}</textarea>
+                            <textarea id="description" name="description" rows="5" class="description-textarea w-full px-4 py-3 text-gray-700 border border-gray-200 rounded-sm" placeholder="Masukkan deskripsi produk" required>{{ old('description', $produk->description ?? '') }}</textarea>
                             @error('description')
                                 <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
                             @enderror

@@ -28,6 +28,7 @@
                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Produk</th>
                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Kategori</th>
                             <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">Harga</th>
+                            <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-gray-500 uppercase text-center">Status</th>
                             <th scope="col" class="relative px-6 py-3"><span class="sr-only">Aksi</span></th>
                         </tr>
                     </thead>
@@ -46,6 +47,17 @@
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="text-sm text-gray-900">Rp {{ number_format($produk->price, 0, ',', '.') }}</div>
                                 </td>
+                                <td class="text-center">
+                                {{-- @if($status === 'aktif') --}}
+                                    <span class="bg-green-100 text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-full">
+                                        Aktif
+                                    </span>
+                                {{-- @else
+                                    <span class="bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-full">
+                                        Nonaktif
+                                    </span>
+                                @endif --}}
+                            </td>
                                 <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                     <div class="flex items-center justify-end space-x-2">
                                         <a href="{{ route('admin.produk.edit', $produk) }}" class="text-gray-800 hover:text-gray-900 hover:bg-gray-100 flex items-center justify-center p-2 border border-gray-200 rounded-sm" title="Edit">
