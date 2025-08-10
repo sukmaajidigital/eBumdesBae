@@ -125,3 +125,8 @@ Route::get('/produk', function (Request $request) {
         'categories' => $categories,
     ]);
 });
+
+Route::get('/produk/tes', function () {
+
+    return view('produk.show');
+})->name('produk.show');
