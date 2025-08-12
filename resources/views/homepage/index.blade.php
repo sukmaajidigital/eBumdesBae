@@ -123,20 +123,26 @@
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach ($products as $product)
-                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all">
-                        <img src="{{ $product->image ? Storage::url($product->image) : 'https://placehold.co/600x600/e2e8f0/64748b?text=Gambar+Produk' }}" alt="{{ $product['name'] }}" class="w-full h-48 object-cover" />
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2 text-gray-900">{{ $product['name'] }}</h3>
-                            <p class="text-gray-600 mb-3">{{ $product['description'] }}</p>
-                            <div class="flex justify-between items-center mb-4">
-                                <span class="text-gray-500">{{ $product['size'] }}</span>
-                                <span class="text-2xl font-bold text-green-600">{{ $product['price'] }}</span>
-                            </div>
-                            <button class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-all flex items-center justify-center gap-2">
-                                <x-lucide-shopping-cart class="h-5 w-5" /> Pesan Sekarang
-                            </button>
+                    <a href="{{ route('produk.show', $product) }}" class="group block bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all">
+
+                        <div class="overflow-hidden">
+                            <img src="{{ $product->image ? Storage::url($product->image) : 'https://placehold.co/600x400/e2e8f0/64748b?text=Gambar' }}" alt="{{ $product->name }}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out" />
                         </div>
-                    </div>
+
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900 truncate">{{ $product->name }}</h3>
+                            <p class="text-gray-600 mb-4 h-20 line-clamp-3">{{ $product->description }}</p>
+
+                            <div class="flex justify-end items-center mb-4">
+                                <span class="text-2xl font-bold text-green-600">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
+                            </div>
+
+                            <div class="w-full bg-green-600 text-white py-3 rounded-lg group-hover:bg-green-700 transition-colors flex items-center justify-center gap-2 font-semibold">
+                                <x-lucide-eye class="h-5 w-5" />
+                                <span>Lihat Detail</span>
+                            </div>
+                        </div>
+                    </a>
                 @endforeach
             </div>
         </div>
