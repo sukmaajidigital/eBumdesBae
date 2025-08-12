@@ -16,45 +16,36 @@ class produkSeeder extends Seeder
     {
 
         // Ambil ID dari setiap kategori
-        $makanan = Kategori::where('name', 'Makanan & Minuman')->first();
-        $kerajinan = Kategori::where('name', 'Kerajinan Tangan')->first();
         $pertanian = Kategori::where('name', 'Produk Pertanian')->first();
 
         $produks = [
             [
-                'name' => 'Kopi Robusta Asli Lereng Muria',
+                'name' => 'Eco Enzim',
                 'category_id' => $pertanian->id,
-                'price' => 55000,
-                'description' => 'Biji kopi robusta pilihan yang dipetik dari perkebunan di lereng Gunung Muria, menghasilkan aroma yang kuat dan cita rasa yang khas.',
-                'image' => 'https://placehold.co/600x400/EFEFEF/AAAAAA&text=Kopi+Robusta'
+                'price' => 25000,
+                'description' => 'Eco Enzim 1 liter adalah produk ramah lingkungan yang terbuat dari fermentasi bahan organik, seperti buah-buahan, sayuran, dan gula. Produk ini memiliki berbagai manfaat, termasuk: pupuk organik,pembersih alami,penganti pupuk kimia.',
+                'image' => 'mainproduk/eco.jpg'
             ],
             [
-                'name' => 'Keripik Pisang Aneka Rasa',
-                'category_id' => $makanan->id,
+                'name' => 'Pupuk Urin Kelinci',
+                'category_id' => $pertanian->id,
+                'price' => 25000,
+                'description' => 'Pupuk organik urine kelinci adalah solusi alami yang kaya nutrisi untuk meningkatkan kesuburan tanah dan pertumbuhan tanaman. Terbuat dari urine kelinci yang diformulasikan secara khusus, produk ini memiliki sejumlah manfaat sebagai berikut: kaya nutrisi,meningkatkan struktur tanah dan ramah lingkungan',
+                'image' => 'mainproduk/urinkelinci.jpg'
+            ],
+            [
+                'name' => 'Media Tanam Tunjung Seto Farm',
+                'category_id' => $pertanian->id,
                 'price' => 15000,
-                'description' => 'Keripik renyah dari pisang kepok pilihan, tersedia dalam rasa original, coklat, dan balado. Cocok untuk camilan setiap saat.',
-                'image' => 'https://placehold.co/600x400/EFEFEF/AAAAAA&text=Keripik+Pisang'
+                'description' => 'Media Tanam Tunjung Seto Farm adalah campuran berkualitas tinggi yang dirancang khusus untuk mendukung pertumbuhan tanaman secara optimal. Kombinasi bahan-bahan alami ini terdiri dari: tanah merah, skam lapuk,skam bakar,kompos.Produk ini sangat cocok untuk berbagai jenis tanaman, baik sayuran, buah-buahan, maupun tanaman hias.',
+                'image' => 'mainproduk/mediatanam.jpg'
             ],
             [
-                'name' => 'Tas Anyaman Enceng Gondok',
-                'category_id' => $kerajinan->id,
-                'price' => 125000,
-                'description' => 'Tas wanita elegan hasil anyaman tangan dari serat enceng gondok yang dikeringkan. Unik, ramah lingkungan, dan stylish.',
-                'image' => 'https://placehold.co/600x400/EFEFEF/AAAAAA&text=Tas+Anyaman'
-            ],
-            [
-                'name' => 'Madu Murni Randu',
+                'name' => 'Pupuk Kandang Kambing',
                 'category_id' => $pertanian->id,
-                'price' => 80000,
-                'description' => 'Madu murni yang dihasilkan dari nektar bunga randu oleh lebah ternak lokal. Berkhasiat untuk menjaga stamina dan kesehatan.',
-                'image' => 'https://placehold.co/600x400/EFEFEF/AAAAAA&text=Madu+Murni'
-            ],
-            [
-                'name' => 'Sandal Batik Kayu',
-                'category_id' => $kerajinan->id,
-                'price' => 75000,
-                'description' => 'Sandal kayu yang nyaman dengan ukiran dan lapisan kain batik tulis khas Kudus. Memberikan sentuhan etnik pada penampilan Anda.',
-                'image' => 'https://placehold.co/600x400/EFEFEF/AAAAAA&text=Sandal+Batik'
+                'price' => 15000,
+                'description' => 'Pupuk Kandang Kambing Organik Murni dan Halus adalah solusi alami yang ideal untuk meningkatkan kesuburan tanah dan pertumbuhan tanaman. Diproduksi dengan proses yang ramah lingkungan, produk ini menawarkan berbagai keunggulan, antara lain: kandungan nutrisi tinggi, ramah lingkungan, tekstur halus. Pupuk ini sangat cocok untuk semua jenis tanaman, baik di kebun rumah maupun lahan pertanian.',
+                'image' => 'mainproduk/pupukkandangkambing.jpg'
             ],
         ];
 

@@ -22,10 +22,14 @@ class HomepageController extends Controller
             ->latest() // Urutkan dari yang paling baru
             ->take(3)  // Ambil hanya 3 produk
             ->get();
+        $sliderProducts = Produk::where('is_active', true)
+            ->latest()
+            ->take(5)
+            ->get();
 
 
         // 3. Kirim data settings dan products ke view
-        return view('homepage.index', compact('settings', 'products'));
+        return view('homepage.index', compact('settings', 'products', 'sliderProducts'));
     }
 
     /**
