@@ -8,7 +8,7 @@
 
             {{-- Logo --}}
             <a href="{{ route('homepage') }}" class="flex items-center space-x-2">
-                <x-lucide-leaf class="h-8 w-8 text-green-600" />
+                <img src="{{ asset('logo/logo-fill.png') }}" alt="Logo" class="h-10 w-10">
                 <span class="text-2xl font-bold text-gray-800">{{ $setting->base_name }}</span>
             </a>
 

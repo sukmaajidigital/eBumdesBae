@@ -6,7 +6,7 @@
         <div class="grid md:grid-cols-3 gap-8">
             <div>
                 <div class="flex items-center space-x-2 mb-4">
-                    <x-lucide-leaf class="h-8 w-8 text-green-400" />
+                    <img src="{{ asset('logo/logo-white-fill.png') }}" alt="Logo" class="h-10 w-10">
                     {{-- Menggunakan nama BUMDES dari database --}}
                     <span class="text-2xl font-bold">{{ $settings->base_name ?? 'EcoEnzyme' }}</span>
                 </div>
