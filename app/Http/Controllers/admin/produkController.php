@@ -40,6 +40,7 @@ class produkController extends Controller
             'price' => 'required|numeric|min:0',
             'description' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Opsional, maks 2MB
+            'is_active' => 'required|boolean',
         ]);
 
         if ($request->hasFile('image')) {
@@ -72,6 +73,7 @@ class produkController extends Controller
             'price' => 'required|numeric|min:0',
             'description' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'is_active' => 'required|boolean',
         ]);
 
         if ($request->hasFile('image')) {

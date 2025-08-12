@@ -109,8 +109,8 @@ Route::get('/produk', function (Request $request) {
     if ($request->filled('search')) {
         $search = strtolower($request->search);
         $filteredProducts = $filteredProducts->filter(function ($product) use ($search) {
-            return Str::contains(strtolower($product['name']), $search) || 
-                   Str::contains(strtolower($product['description']), $search);
+            return Str::contains(strtolower($product['name']), $search) ||
+                Str::contains(strtolower($product['description']), $search);
         });
     }
 

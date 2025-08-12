@@ -53,6 +53,16 @@
                                 <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
                             @enderror
                         </div>
+                        <div>
+                            <label for="is_active" class="text-gray-900 font-semibold">Status</label>
+                            <select id="is_active" name="is_active" class="w-full px-4 py-3 text-gray-700 border border-gray-200 rounded-sm" required>
+                                <option value="1" {{ old('is_active', $produk->is_active ?? '') == 1 ? 'selected' : '' }}>Aktif</option>
+                                <option value="0" {{ old('is_active', $produk->is_active ?? '') == 0 ? 'selected' : '' }}>Nonaktif</option>
+                            </select>
+                            @error('is_active')
+                                <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
                 </div>
                 {{-- Upload gambar --}}

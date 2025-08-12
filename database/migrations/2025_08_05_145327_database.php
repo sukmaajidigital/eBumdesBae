@@ -24,6 +24,7 @@ return new class extends Migration
             $table->decimal('price', 15, 2);
             $table->longText('description');
             $table->string('image')->nullable();
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
         });
         Schema::create('settings', function (Blueprint $table) {

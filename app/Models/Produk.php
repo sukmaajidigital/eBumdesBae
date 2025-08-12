@@ -21,6 +21,7 @@ class Produk extends Model
         'price',
         'description',
         'image',
+        'is_active',
     ];
 
     /**
