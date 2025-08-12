@@ -1,15 +1,7 @@
-@php
-    // Definisikan item menu sebagai variabel PHP
-    $menuItems = [
-        ['name' => 'Home', 'href' => '#home'],
-        ['name' => 'Tentang', 'href' => '#about'],
-        ['name' => 'Manfaat', 'href' => '#benefits'],
-        ['name' => 'Produk', 'href' => 'produk'],
-        ['name' => 'Kontak', 'href' => '#contact'],
-    ];
-@endphp
-
 {{-- Inisialisasi komponen Alpine.js untuk state management --}}
+@php
+    $setting = \App\Models\Setting::first();
+@endphp
 <header x-data="{ isMenuOpen: false }" class="bg-white shadow-md sticky top-0 z-50">
     <div class="container mx-auto px-4 py-4">
         <div class="flex items-center justify-between">
@@ -17,17 +9,15 @@
             {{-- Logo --}}
             <a href="{{ route('homepage') }}" class="flex items-center space-x-2">
                 <x-lucide-leaf class="h-8 w-8 text-green-600" />
-                <span class="text-2xl font-bold text-gray-800 ">EcoEnzyme</span>
+                <span class="text-2xl font-bold text-gray-800">{{ $setting->base_name }}</span>
             </a>
 
-            {{-- Menu Desktop --}}
             <nav class="hidden md:flex space-x-8">
-                @foreach ($menuItems as $item)
-                    <a href="{{ $item['href'] }}"
-                        class="text-gray-600 hover:text-green-600 transition-colors font-medium">
-                        {{ $item['name'] }}
-                    </a>
-                @endforeach
+                <a href="{{ route('homepage') }}" class="text-gray-600 hover:text-green-600 transition-colors font-medium">Home</a>
+                <a href="{{ route('about') }}" class="text-gray-600 hover:text-green-600 transition-colors font-medium">Tentang</a>
+                {{-- <a href="{{ route('homepage') }}#benefits" class="text-gray-600 hover:text-green-600 transition-colors font-medium">Manfaat</a> --}}
+                <a href="{{ route('produk.index') }}" class="text-gray-600 hover:text-green-600 transition-colors font-medium">Produk</a>
+                <a href="#contact" class="text-gray-600 hover:text-green-600 transition-colors font-medium">Kontak</a>
             </nav>
 
             {{-- Tombol Menu Mobile --}}
@@ -38,16 +28,12 @@
             </button>
         </div>
 
-        {{-- Menu Mobile (Muncul berdasarkan state 'isMenuOpen') --}}
-        <nav class="md:hidden mt-4 pb-4" x-show="isMenuOpen" x-cloak @click.away="isMenuOpen = false"
-            {{-- Menu akan tertutup jika klik di luar area --}} x-transition>
-            @foreach ($menuItems as $item)
-                <a href="{{ $item['href'] }}"
-                    class="block py-2 text-gray-600 hover:text-green-600 transition-colors"
-                    @click="isMenuOpen = false" {{-- Menu akan tertutup setelah item diklik --}}>
-                    {{ $item['name'] }}
-                </a>
-            @endforeach
+        <nav class="md:hidden mt-4 pb-4" x-show="isMenuOpen" x-cloak @click.away="isMenuOpen = false" x-transition>
+            <a href="{{ route('homepage') }}#home" class="block py-2 text-gray-600 hover:text-green-600 transition-colors" @click="isMenuOpen = false">Home</a>
+            <a href="{{ route('about') }}" class="block py-2 text-gray-600 hover:text-green-600 transition-colors" @click="isMenuOpen = false">Tentang</a>
+            {{-- <a href="{{ route('homepage') }}#benefits" class="block py-2 text-gray-600 hover:text-green-600 transition-colors" @click="isMenuOpen = false">Manfaat</a> --}}
+            <a href="{{ route('produk.index') }}" class="block py-2 text-gray-600 hover:text-green-600 transition-colors" @click="isMenuOpen = false">Produk</a>
+            <a href="#contact" class="block py-2 text-gray-600 hover:text-green-600 transition-colors" @click="isMenuOpen = false">Kontak</a>
         </nav>
     </div>
 </header>

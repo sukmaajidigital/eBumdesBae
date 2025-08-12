@@ -1,37 +1,3 @@
-@php
-    // Data dummy untuk satu produk. Dalam aplikasi nyata, ini akan menjadi objek $product dari Controller.
-    $product = [
-        'id' => 1,
-        'name' => 'Eco Enzyme BUMDES Organic',
-        'size' => '1L',
-        'price' => 45000,
-        'images' => [
-            'https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=800&q=80',
-            'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=800&q=80',
-        ],
-        'description' => 'Pembersih organik hasil fermentasi limbah buah dan sayuran yang ramah lingkungan.',
-        'fullDescription' =>
-            'Eco Enzyme BUMDES Organic adalah pembersih multiguna yang dibuat melalui proses fermentasi alami limbah buah dan sayuran. Produk ini tidak mengandung bahan kimia berbahaya dan aman untuk lingkungan. Dapat digunakan untuk membersihkan lantai, peralatan dapur, dan sebagai pestisida alami untuk tanaman.',
-        'category' => 'Pembersih',
-        'stock' => 25,
-        'rating' => 4.8,
-        'reviews' => 124,
-        'bumdes' => 'BUMDES Sari Makmur',
-        'location' => 'Desa Sukamaju, Bogor',
-        'benefits' => [
-            'Ramah lingkungan dan biodegradable',
-            'Tidak mengandung bahan kimia berbahaya',
-            'Multifungsi untuk berbagai keperluan',
-            'Mendukung ekonomi desa',
-        ],
-        'ingredients' => 'Limbah buah dan sayuran terfermentasi, air, gula aren.',
-        'usage' => 'Campurkan 1:10 dengan air untuk pembersih lantai, atau 1:5 untuk pestisida alami pada tanaman.',
-    ];
-
-    // Data dummy untuk produk rekomendasi
-    $recommendedProducts = [];
-@endphp
-
 <style>
     [x-cloak] {
         display: none !important;
@@ -40,13 +6,14 @@
 
 <x-layouts>
     <div x-data="{
-        product: @js($product),
-        selectedImageIndex: 0,
+        // Inisialisasi data dari controller
+        product: @json($product),
+        settings: @json($settings),
         quantity: 1,
-        activeTab: 'description',
     
         get totalPrice() {
-            return this.product.price * this.quantity;
+            const price = parseFloat(this.product.price) || 0;
+            return price * this.quantity;
         },
     
         formatPrice(price) {
@@ -58,7 +25,8 @@
         },
     
         handleWhatsAppOrder() {
-            const phoneNumber = '6288980798945';
+            // Ambil nomor WA dari data settings yang dinamis
+            const phoneNumber = this.settings.phone.replace(/[^0-9]/g, '');
             const message = `Halo, saya tertarik untuk memesan produk:\n\n*${this.product.name}*\nJumlah: *${this.quantity}*\nTotal Harga: *${this.formatPrice(this.totalPrice)}*\n\nMohon informasinya. Terima kasih.`;
             const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
@@ -67,78 +35,50 @@
 
         <main class="container mx-auto px-4 py-10">
             <div class="grid lg:grid-cols-2 gap-10 mb-12">
-                <!-- Galeri Gambar -->
                 <div class="space-y-5">
                     <div class="aspect-square rounded-2xl overflow-hidden bg-gray-100 shadow-lg border border-gray-200">
-                        <img :src="product.images[selectedImageIndex]" :alt="product.name"
-                            class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
-                    </div>
-                    <div class="flex gap-3 overflow-x-auto pb-2">
-                        <template x-for="(image, index) in product.images" :key="index">
-                            <button @click="selectedImageIndex = index"
-                                :class="selectedImageIndex === index ? 'ring-2 ring-emerald-500 border-emerald-500' :
-                                    'border-transparent'"
-                                class="flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden border transition-all hover:opacity-80">
-                                <img :src="image" :alt="`${product.name} ${index + 1}`"
-                                    class="w-full h-full object-cover" />
-                            </button>
-                        </template>
+                        {{-- Menampilkan satu gambar dari kolom 'image' --}}
+                        <img src="{{ $product->image ? Storage::url($product->image) : 'https://placehold.co/600x600/e2e8f0/64748b?text=Gambar+Produk' }}" alt="{{ $product->name }}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
                     </div>
                 </div>
 
-                <!-- Info Produk -->
                 <div class="space-y-8">
                     <div>
-                        <span
-                            class="inline-block bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full mb-3"
-                            x-text="product.category"></span>
-                        <h1 class="text-4xl font-bold text-gray-900 mb-3 leading-tight" x-text="product.name"></h1>
-                        <p class="text-gray-600 text-base leading-relaxed" x-text="product.fullDescription"></p>
-                    </div>
-
-                    <div class="flex items-center gap-5 text-sm">
-                        <div class="flex items-center">
-                            <x-lucide-star class="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                            <span class="ml-1 font-semibold text-gray-800" x-text="product.rating"></span>
-                            <span class="ml-2 text-gray-500" x-text="`(${product.reviews} ulasan)`"></span>
-                        </div>
-                        <div class="h-5 w-px bg-gray-300"></div>
-                        <span
-                            class="inline-block bg-green-50 text-green-700 text-xs font-semibold px-3 py-1 rounded-full">
-                            Stok: <span x-text="product.stock"></span>
+                        <span class="inline-block bg-emerald-100 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full mb-3">
+                            {{ $product->kategori->name }}
                         </span>
+                        <h1 class="text-4xl font-bold text-gray-900 mb-3 leading-tight">{{ $product->name }}</h1>
+                        {{-- Menggunakan 'description' sebagai deskripsi lengkap --}}
+                        <p class="text-gray-600 text-base leading-relaxed">{{ $product->description }}</p>
                     </div>
 
+                    {{-- Info BUMDES dari tabel Settings --}}
                     <div class="space-y-2 text-sm text-gray-600">
                         <div class="flex items-center">
                             <x-lucide-users class="h-4 w-4 mr-2 text-emerald-600" />
-                            <span x-text="product.bumdes"></span>
+                            <span>{{ $settings->base_name ?? 'BUMDES Lokal' }}</span>
                         </div>
                         <div class="flex items-center">
                             <x-lucide-map-pin class="h-4 w-4 mr-2 text-emerald-600" />
-                            <span x-text="product.location"></span>
+                            <span>{{ $settings->address ?? 'Lokasi tidak tersedia' }}</span>
                         </div>
                     </div>
 
-                    <!-- Kotak Pemesanan -->
                     <div class="bg-white/80 backdrop-blur-md rounded-xl p-6 border border-gray-200 shadow-lg">
                         <div class="flex items-baseline gap-2 mb-5">
-                            <span class="text-3xl font-bold text-emerald-700"
-                                x-text="formatPrice(product.price)"></span>
-                            <span class="text-gray-500">/ <span x-text="product.size"></span></span>
+                            <span class="text-3xl font-bold text-emerald-700" x-text="formatPrice(product.price)"></span>
+                            {{-- Info '/ size' dihapus karena kolom 'size' tidak ada --}}
                         </div>
 
                         <div class="flex items-center gap-4 mb-5">
                             <label class="text-sm font-medium text-gray-700">Jumlah:</label>
                             <div class="flex items-center border border-gray-300 rounded-lg overflow-hidden">
-                                <button @click="quantity = Math.max(1, quantity - 1)" :disabled="quantity <= 1"
-                                    class="px-3 py-2 text-gray-600 hover:bg-gray-100 disabled:opacity-40">
+                                <button @click="quantity = Math.max(1, quantity - 1)" :disabled="quantity <= 1" class="px-3 py-2 text-gray-600 hover:bg-gray-100 disabled:opacity-40">
                                     <x-lucide-minus class="h-4 w-4" />
                                 </button>
                                 <span class="px-5 py-2 font-medium" x-text="quantity"></span>
-                                <button @click="quantity = Math.min(product.stock, quantity + 1)"
-                                    :disabled="quantity >= product.stock"
-                                    class="px-3 py-2 text-gray-600 hover:bg-gray-100 disabled:opacity-40">
+                                {{-- Kondisi disabled pada tombol plus dihapus karena tidak ada info stok --}}
+                                <button @click="quantity++" class="px-3 py-2 text-gray-600 hover:bg-gray-100">
                                     <x-lucide-plus class="h-4 w-4" />
                                 </button>
                             </div>
@@ -149,69 +89,30 @@
                             <span class="text-2xl font-bold text-emerald-700" x-text="formatPrice(totalPrice)"></span>
                         </div>
 
-                        <button @click="handleWhatsAppOrder"
-                            class="w-full bg-emerald-600 text-white font-semibold py-3 rounded-lg hover:bg-emerald-700 transition-all flex items-center justify-center text-base shadow-md">
+                        <button @click="handleWhatsAppOrder" class="w-full bg-emerald-600 text-white font-semibold py-3 rounded-lg hover:bg-emerald-700 transition-all flex items-center justify-center text-base shadow-md">
                             <x-lucide-shopping-cart class="h-5 w-5 mr-2" />
                             Pesan via WhatsApp
                         </button>
-
-                        <div class="flex items-center justify-center gap-6 text-xs text-gray-500 mt-5">
-                            <div class="flex items-center"><x-lucide-truck class="h-4 w-4 mr-1" /> Gratis Ongkir</div>
-                            <div class="flex items-center"><x-lucide-shield class="h-4 w-4 mr-1" /> Produk Original
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Tabs Detail -->
-            <div>
-                <div class="border-b border-gray-200">
-                    <nav class="flex space-x-8" aria-label="Tabs">
-                        <template
-                            x-for="tab in [
-                            { id: 'description', label: 'Deskripsi' },
-                            { id: 'benefits', label: 'Manfaat' },
-                            { id: 'usage', label: 'Cara Pakai' }
-                        ]">
-                            <button @click="activeTab = tab.id"
-                                :class="activeTab === tab.id ?
-                                    'border-emerald-600 text-emerald-600' :
-                                    'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'"
-                                class="relative py-4 px-1 border-b-2 font-medium text-sm transition-all">
-                                <span x-text="tab.label"></span>
-                            </button>
-                        </template>
-                    </nav>
-                </div>
-
-                <div class="mt-6 space-y-6">
-                    <div x-show="activeTab === 'description'" x-cloak
-                        class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                        <h3 class="text-lg font-semibold mb-3">Deskripsi Produk</h3>
-                        <p class="text-gray-600 mb-4 leading-relaxed" x-text="product.fullDescription"></p>
-                        <h4 class="font-medium mb-2">Komposisi:</h4>
-                        <p class="text-gray-600" x-text="product.ingredients"></p>
-                    </div>
-                    <div x-show="activeTab === 'benefits'" x-cloak
-                        class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                        <h3 class="text-lg font-semibold mb-3">Manfaat Produk</h3>
-                        <ul class="space-y-2">
-                            <template x-for="(benefit, index) in product.benefits" :key="index">
-                                <li class="flex items-start">
-                                    <span class="text-emerald-600 mr-2 mt-1">✓</span>
-                                    <span class="text-gray-600" x-text="benefit"></span>
-                                </li>
-                            </template>
-                        </ul>
-                    </div>
-                    <div x-show="activeTab === 'usage'" x-cloak
-                        class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                        <h3 class="text-lg font-semibold mb-3">Cara Penggunaan</h3>
-                        <p class="text-gray-600 leading-relaxed" x-text="product.usage"></p>
+            @if ($recommendedProducts->isNotEmpty())
+                <div class="mt-16">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Anda Mungkin Juga Suka</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        @foreach ($recommendedProducts as $recoProduct)
+                            <a href="{{ route('produk.show', $recoProduct) }}" class="group block overflow-hidden rounded-xl bg-white/50 backdrop-blur-sm shadow-lg hover:shadow-2xl transition-all duration-300">
+                                <img src="{{ $recoProduct->image ? Storage::url($recoProduct->image) : 'https://placehold.co/300x300/e2e8f0/64748b?text=Gambar' }}" alt="{{ $recoProduct->name }}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+                                <div class="p-4">
+                                    <h3 class="font-semibold text-lg text-gray-800">{{ $recoProduct->name }}</h3>
+                                    <p class="text-emerald-700 font-bold mt-2">Rp {{ number_format($recoProduct->price, 0, ',', '.') }}</p>
+                                </div>
+                            </a>
+                        @endforeach
                     </div>
                 </div>
-            </div>
+            @endif
         </main>
     </div>
 </x-layouts>

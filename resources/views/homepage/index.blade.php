@@ -1,3 +1,27 @@
+@php
+    // $benefits = [
+    //     [
+    //         'icon' => 'shield', // Nama ikon sebagai string
+    //         'title' => 'Ramah Lingkungan',
+    //         'description' => 'Tidak mengandung bahan kimia berbahaya yang dapat mencemari air dan tanah',
+    //     ],
+    //     [
+    //         'icon' => 'sparkles',
+    //         'title' => 'Pembersih Alami',
+    //         'description' => 'Efektif membersihkan noda, lemak, dan bakteri tanpa meninggalkan residu',
+    //     ],
+    //     [
+    //         'icon' => 'sprout',
+    //         'title' => 'Pupuk Organik',
+    //         'description' => 'Dapat digunakan sebagai pupuk cair untuk menyuburkan tanaman',
+    //     ],
+    //     [
+    //         'icon' => 'heart',
+    //         'title' => 'Aman untuk Keluarga',
+    //         'description' => 'Tidak berbahaya jika tersentuh kulit atau terhirup, aman untuk anak-anak',
+    //     ],
+    // ];
+@endphp
 <x-layouts>
     {{-- hero section --}}
     <section id="home" class="bg-gradient-to-br from-green-50 to-white py-24">
@@ -9,26 +33,22 @@
                         <span class="text-green-600">BUMDES Berkualitas</span>
                     </h1>
                     <p class="text-lg text-gray-600 max-w-lg mb-8">
-                        Temukan berbagai produk unggulan dari Badan Usaha Milik Desa (BUMDES) desa Bae.
-                        Dari eco enzyme, media tanam, pupuk organik, hingga produk pertanian berkualitas tinggi.
+                        {{ $settings->description }}
                     </p>
-                    <button
-                        class="bg-green-600 text-white px-8 py-4 rounded-xl hover:bg-green-700 transition-all flex items-center gap-2 text-lg font-semibold shadow-lg">
+                    <button class="bg-green-600 text-white px-8 py-4 rounded-xl hover:bg-green-700 transition-all flex items-center gap-2 text-lg font-semibold shadow-lg">
                         Pesan Sekarang
                         <x-lucide-arrow-right class="h-5 w-5" />
                     </button>
                 </div>
                 <div class="flex justify-center">
-                    <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=600&q=80"
-                        alt="Eco Enzyme - Solusi Ramah Lingkungan"
-                        class="rounded-xl shadow-2xl object-cover max-w-full h-[30rem]" />
+                    <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=600&q=80" alt="Eco Enzyme - Solusi Ramah Lingkungan" class="rounded-xl shadow-2xl object-cover max-w-full h-[30rem]" />
                 </div>
             </div>
         </div>
     </section>
 
     {{-- about section --}}
-    <section id="about" class="py-24 bg-white">
+    {{-- <section id="about" class="py-24 bg-white">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Tentang BUMDES Mart</h2>
@@ -60,10 +80,8 @@
                 @endphp
                 @foreach ($aboutItems as $item)
                     <div class="bg-green-50 rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-all">
-                        <div
-                            class="bg-green-100 rounded-full p-5 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
-                            <x-dynamic-component component="lucide-{{ $item['icon'] }}"
-                                class="h-8 w-8 text-green-600" />
+                        <div class="bg-green-100 rounded-full p-5 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                            <x-dynamic-component component="lucide-{{ $item['icon'] }}" class="h-8 w-8 text-green-600" />
                         </div>
                         <h3 class="text-xl font-semibold mb-2">{{ $item['title'] }}</h3>
                         <p class="text-gray-600">{{ $item['desc'] }}</p>
@@ -71,10 +89,10 @@
                 @endforeach
             </div>
         </div>
-    </section>
+    </section> --}}
 
     {{-- benefits --}}
-    <section id="benefits" class="py-24 bg-green-50">
+    {{-- <section id="benefits" class="py-24 bg-green-50">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Manfaat Eco Enzyme</h2>
@@ -85,10 +103,8 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 @foreach ($benefits as $benefit)
                     <div class="bg-white rounded-xl p-6 text-center shadow-md hover:shadow-xl transition-all">
-                        <div
-                            class="bg-green-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                            <x-dynamic-component component="lucide-{{ $benefit['icon'] }}"
-                                class="h-8 w-8 text-green-600" />
+                        <div class="bg-green-100 rounded-full p-4 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <x-dynamic-component component="lucide-{{ $benefit['icon'] }}" class="h-8 w-8 text-green-600" />
                         </div>
                         <h3 class="text-xl font-semibold text-gray-900 mb-3">{{ $benefit['title'] }}</h3>
                         <p class="text-gray-600">{{ $benefit['description'] }}</p>
@@ -96,20 +112,19 @@
                 @endforeach
             </div>
         </div>
-    </section>
+    </section> --}}
 
     {{-- products --}}
     <section id="products" class="py-24 bg-gray-50">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Produk Kami</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Pilih produk Eco Enzyme sesuai kebutuhan Anda</p>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Segala Produk Dari BUMDES</p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach ($products as $product)
                     <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all">
-                        <img src="{{ $product['image'] }}" alt="{{ $product['name'] }}"
-                            class="w-full h-48 object-cover" />
+                        <img src="{{ $product->image ? Storage::url($product->image) : 'https://placehold.co/600x600/e2e8f0/64748b?text=Gambar+Produk' }}" alt="{{ $product['name'] }}" class="w-full h-48 object-cover" />
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2 text-gray-900">{{ $product['name'] }}</h3>
                             <p class="text-gray-600 mb-3">{{ $product['description'] }}</p>
@@ -117,8 +132,7 @@
                                 <span class="text-gray-500">{{ $product['size'] }}</span>
                                 <span class="text-2xl font-bold text-green-600">{{ $product['price'] }}</span>
                             </div>
-                            <button
-                                class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-all flex items-center justify-center gap-2">
+                            <button class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-all flex items-center justify-center gap-2">
                                 <x-lucide-shopping-cart class="h-5 w-5" /> Pesan Sekarang
                             </button>
                         </div>
@@ -129,7 +143,7 @@
     </section>
 
     {{-- contact --}}
-    <section id="contact" class="py-24 bg-green-50">
+    {{-- <section id="contact" class="py-24 bg-green-50">
         <div class="container mx-auto px-6">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Hubungi Kami</h2>
@@ -174,29 +188,22 @@
                         @csrf
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Nama Lengkap</label>
-                            <input type="text"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                                placeholder="Masukkan nama lengkap" />
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Masukkan nama lengkap" />
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                            <input type="email"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                                placeholder="Masukkan email" />
+                            <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Masukkan email" />
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Pesan</label>
-                            <textarea rows="4"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                                placeholder="Tulis pesan Anda di sini..."></textarea>
+                            <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Tulis pesan Anda di sini..."></textarea>
                         </div>
-                        <button type="submit"
-                            class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-all font-semibold">
+                        <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-all font-semibold">
                             Kirim Pesan
                         </button>
                     </form>
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 </x-layouts>
