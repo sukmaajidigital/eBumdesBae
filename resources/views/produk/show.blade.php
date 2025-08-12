@@ -38,7 +38,7 @@
                 <div class="space-y-5">
                     <div class="aspect-square rounded-2xl overflow-hidden bg-gray-100 shadow-lg border border-gray-200">
                         {{-- Menampilkan satu gambar dari kolom 'image' --}}
-                        <img src="{{ $product->image ? Storage::url($product->image) : 'https://placehold.co/600x600/e2e8f0/64748b?text=Gambar+Produk' }}" alt="{{ $product->name }}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product['name'] }}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
                     </div>
                 </div>
 
@@ -103,7 +103,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         @foreach ($recommendedProducts as $recoProduct)
                             <a href="{{ route('produk.show', $recoProduct) }}" class="group block overflow-hidden rounded-xl bg-white/50 backdrop-blur-sm shadow-lg hover:shadow-2xl transition-all duration-300">
-                                <img src="{{ $recoProduct->image ? Storage::url($recoProduct->image) : 'https://placehold.co/300x300/e2e8f0/64748b?text=Gambar' }}" alt="{{ $recoProduct->name }}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product['name'] }}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
                                 <div class="p-4">
                                     <h3 class="font-semibold text-lg text-gray-800">{{ $recoProduct->name }}</h3>
                                     <p class="text-emerald-700 font-bold mt-2">Rp {{ number_format($recoProduct->price, 0, ',', '.') }}</p>

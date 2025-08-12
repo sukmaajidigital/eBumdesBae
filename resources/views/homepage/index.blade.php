@@ -126,7 +126,7 @@
                     <a href="{{ route('produk.show', $product) }}" class="group block bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all">
 
                         <div class="overflow-hidden">
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out" />
+                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product['name'] }}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out" />
                         </div>
 
                         <div class="p-6">
