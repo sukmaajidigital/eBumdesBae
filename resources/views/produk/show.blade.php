@@ -103,7 +103,7 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         @foreach ($recommendedProducts as $recoProduct)
                             <a href="{{ route('produk.show', $recoProduct) }}" class="group block overflow-hidden rounded-xl bg-white/50 backdrop-blur-sm shadow-lg hover:shadow-2xl transition-all duration-300">
-                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product['name'] }}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+                                <img src="{{ $produk->image ? asset('storage/' . $produk->image) : 'https://placehold.co/100x100/EFEFEF/AAAAAA&text=No+Image' }}" alt="{{ $product->name }}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
                                 <div class="p-4">
                                     <h3 class="font-semibold text-lg text-gray-800">{{ $recoProduct->name }}</h3>
                                     <p class="text-emerald-700 font-bold mt-2">Rp {{ number_format($recoProduct->price, 0, ',', '.') }}</p>
