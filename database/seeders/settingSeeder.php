@@ -14,10 +14,10 @@ class settingSeeder extends Seeder
     public function run(): void
     {
         Setting::create([
-            'base_name'   => 'BUMDES Tunjung Seto Desa Bae Kudus',
-            'description' => 'Pusat produk unggulan dan layanan masyarakat dari BUMDes Tunjung Seto, berlokasi di Desa Bae, Kudus. Berkomitmen untuk memajukan perekonomian lokal.',
-            'email'       => 'info.bumdesbae@example.com',
-            'phone'       => '6281234567890',
+            'base_name'   => 'BUMDES Tunjung Seto',
+            'description' => 'BUMDes Tunjung Seto merupakan motor penggerak ekonomi di Desa Bae, Kudus. Kami hadir untuk memberdayakan masyarakat dengan mengangkat dan memasarkan potensi lokal. Melalui platform digital ini, kami menyajikan produk-produk unggulan hasil karya warga, seperti eco enzyme, media tanam, dan pupuk organik yang berkualitas. Setiap pembelian Anda adalah dukungan nyata bagi kemandirian dan kesejahteraan masyarakat desa.',
+            'email'       => 'info.bumdesbae@gmail.com',
+            'phone'       => '6281325358266',
             'address'     => 'Jl. Raya Kudus - Colo KM 5, Desa Bae, Kecamatan Bae, Kabupaten Kudus, Jawa Tengah',
         ]);
     }
