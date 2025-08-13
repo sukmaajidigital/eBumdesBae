@@ -35,13 +35,16 @@
                     <p class="text-lg text-gray-600 max-w-lg mb-8">
                         {{ $settings->description }}
                     </p>
-                    <button class="bg-green-600 text-white px-8 py-4 rounded-xl hover:bg-green-700 transition-all flex items-center gap-2 text-lg font-semibold shadow-lg">
+                    <button
+                        class="bg-green-600 text-white px-8 py-4 rounded-xl hover:bg-green-700 transition-all flex items-center gap-2 text-lg font-semibold shadow-lg">
                         Pesan Sekarang
                         <x-lucide-arrow-right class="h-5 w-5" />
                     </button>
                 </div>
                 <div class="flex justify-center">
-                    <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=600&q=80" alt="Eco Enzyme - Solusi Ramah Lingkungan" class="rounded-xl shadow-2xl object-cover max-w-full h-[30rem]" />
+                    <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=600&q=80"
+                        alt="Eco Enzyme - Solusi Ramah Lingkungan"
+                        class="rounded-xl shadow-2xl object-cover max-w-full h-[30rem]" />
                 </div>
             </div>
         </div>
@@ -122,22 +125,27 @@
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto">Segala Produk Dari BUMDES</p>
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                @foreach ($products as $product)
-                    <a href="{{ route('produk.show', $product) }}" class="group block bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all">
+                @foreach ($products as $produk)
+                    <a href="{{ route('produk.show', $produk) }}"
+                        class="group block bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all">
 
                         <div class="overflow-hidden">
-                            <img src="{{ $produk->image ? asset('storage/' . $produk->image) : 'https://placehold.co/100x100/EFEFEF/AAAAAA&text=No+Image' }}" alt="{{ $product->name }}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out" />
+                            <img src="{{ $produk->image ? asset('storage/' . $produk->image) : 'https://placehold.co/100x100/EFEFEF/AAAAAA&text=No+Image' }}"
+                                alt="{{ $produk->name }}"
+                                class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out" />
                         </div>
 
                         <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2 text-gray-900 truncate">{{ $product->name }}</h3>
-                            <p class="text-gray-600 mb-4 h-20 line-clamp-3">{{ $product->description }}</p>
+                            <h3 class="text-xl font-semibold mb-2 text-gray-900 truncate">{{ $produk->name }}</h3>
+                            <p class="text-gray-600 mb-4 h-20 line-clamp-3">{{ $produk->description }}</p>
 
                             <div class="flex justify-end items-center mb-4">
-                                <span class="text-2xl font-bold text-green-600">Rp {{ number_format($product->price, 0, ',', '.') }}</span>
+                                <span class="text-2xl font-bold text-green-600">Rp
+                                    {{ number_format($produk->price, 0, ',', '.') }}</span>
                             </div>
 
-                            <div class="w-full bg-green-600 text-white py-3 rounded-lg group-hover:bg-green-700 transition-colors flex items-center justify-center gap-2 font-semibold">
+                            <div
+                                class="w-full bg-green-600 text-white py-3 rounded-lg group-hover:bg-green-700 transition-colors flex items-center justify-center gap-2 font-semibold">
                                 <x-lucide-eye class="h-5 w-5" />
                                 <span>Lihat Detail</span>
                             </div>
