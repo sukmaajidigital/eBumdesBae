@@ -6,7 +6,7 @@
         <div class="grid md:grid-cols-3 gap-8">
             <div>
                 <div class="flex items-center space-x-2 mb-4">
-                    <img src="{{ asset('logo/logo-white-fill.png') }}" alt="Logo" class="h-10 w-10">
+                    <img src="{{ asset('logo/logo-bumdes-cut-white.png') }}" alt="Logo" class="h-10 w-10">
                     {{-- Menggunakan nama BUMDES dari database --}}
                     <span class="text-2xl font-bold">{{ $settings->base_name ?? 'EcoEnzyme' }}</span>
                 </div>
@@ -40,7 +40,7 @@
                         <x-lucide-github class="h-5 w-5" />
                         <span>Muhammad Aji Sukma</span>
                     </a>
-
+                    </br>
                     {{-- Developer 2 --}}
                     <a href="https://github.com/BitwiseJs" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 text-green-200 hover:text-white transition-colors">
                         <x-lucide-github class="h-5 w-5" />
