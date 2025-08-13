@@ -41,7 +41,7 @@ Route::prefix('admin')->group(function () {
 });
 
 // GUEST
-Route::get('/', [HomepageController::class, 'index'])->name('homepage');
+Route::get('/home', [HomepageController::class, 'index'])->name('homepage');
 Route::get('/about', [HomepageController::class, 'about'])->name('about');
 Route::prefix('produk')->group(function () {
     Route::get('/', [ProdukController::class, 'index'])->name('produk.index');
